@@ -1,6 +1,6 @@
 import React from "react";
 
-import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
+import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
 
 import {
   ErrorBoundary,
@@ -27,23 +27,25 @@ import {
 } from "./config/config-helper";
 
 const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig();
-const connector = new AppSearchAPIConnector({
-  searchKey,
-  engineName,
-  hostIdentifier,
-  endpointBase
+
+const connector = new ElasticsearchAPIConnector({
+  host: "http://localhost:9200",
+  index: "ticket_test_data"
 });
+
 const config = {
   searchQuery: {
     facets: buildFacetConfigFromConfig(),
     ...buildSearchOptionsFromConfig()
   },
+
   autocompleteQuery: buildAutocompleteQueryConfig(),
   apiConnector: connector,
   alwaysSearchOnInitialLoad: true
 };
 
 export default function App() {
+
   return (
     <SearchProvider config={config}>
       <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
