@@ -199,9 +199,7 @@ export default function App() {
             
 
           
-      
-
-
+  
       {/* ELS Layout */}
 
       <SearchProvider config={config}>

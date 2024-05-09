@@ -7,6 +7,25 @@
 
 ---
 
+## ELS & Kibana config
+
+Start ELS:
+
+```bash
+docker run -p 9200:9200 -d --name elasticsearch \
+  -e "discovery.type=single-node" \
+  -e "xpack.security.enabled=false" \
+  -e "xpack.security.http.ssl.enabled=false" \
+  -e "xpack.license.self_generated.type=basic" \
+  docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+```
+Start Kibana. Remove --net parameter if you don't want to run it in specific 'elastic' docker network.
+
+```
+docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.13.2
+```
+
+
 ## Getting started 🐣
 
 This is a generated search experience created with [Search UI](https://github.com/elastic/search-ui).
