@@ -131,14 +131,10 @@ export default function App() {
         <ThemeProvider theme={theme}>
           {/* change margin hier später in der box */}
 
-
           <Box sx={{ flexGrow: 1 }} >
             {/* baseline entfernt margin */}
             <CssBaseline />
             <AppBar position="static"  >
-
-
-
 
               <Toolbar>
 
@@ -185,8 +181,7 @@ export default function App() {
           </Box>
         </ThemeProvider>
 
-        {/* starte 2 container here */}
-
+        {/* 2 containers search and result start here*/}
         <Grid container spacing={2}>
 
           {/* Search Box */}
@@ -254,12 +249,8 @@ export default function App() {
 
           </Grid>
 
-
         </Grid>
 
-
-
     </SearchProvider>
-
   );
 }
