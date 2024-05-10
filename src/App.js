@@ -125,134 +125,141 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function App() {
 
   return (
-    <div>
-      {/* MUI Layout  */}
-      <ThemeProvider theme={theme}>
-        {/* change margin hier später in der box */}
+    <SearchProvider config={config}>
+
+        {/* MUI Layout  */}
+        <ThemeProvider theme={theme}>
+          {/* change margin hier später in der box */}
 
 
-        <Box sx={{ flexGrow: 1 }} >
-          {/* baseline entfernt margin */}
-          <CssBaseline />
-          <AppBar position="static"  >
+          <Box sx={{ flexGrow: 1 }} >
+            {/* baseline entfernt margin */}
+            <CssBaseline />
+            <AppBar position="static"  >
 
 
 
 
-            <Toolbar>
+              <Toolbar>
 
-              <Box
-                component="img"
-                alt="Logo"
-                sx={{ border: 0, height: 54, width: 54 }}
-                src={architects_logo}
-              />
-
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ 'aria-label': 'search' }}
+                <Box
+                  component="img"
+                  alt="Logo"
+                  sx={{ border: 0, height: 54, width: 54 }}
+                  src={architects_logo}
                 />
-              </Search>
 
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={17} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ 'aria-label': 'search' }}
+                  />
+                </Search>
 
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                //   onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+                <IconButton
+                  size="large"
+                  aria-label="show 17 new notifications"
+                  color="inherit"
+                >
+                  <Badge badgeContent={17} color="error">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
 
-            </Toolbar>
-          </AppBar>
-        </Box>
-      </ThemeProvider>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  //   onClick={handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
 
-      {/* starte 2 container here */}
+              </Toolbar>
+            </AppBar>
+          </Box>
+        </ThemeProvider>
 
-      <Grid container spacing={2}>
-        <Grid item xs={6}>
+        {/* starte 2 container here */}
 
-            <Box sx={{ bgcolor: '#D9D9D9', height: '100vh' }} />
+        <Grid container spacing={2}>
+
+          {/* Search Box */}
+          <Grid item xs={6}>
+
+            <Box sx={{ bgcolor: '#D9D9D9', height: '100vh' }}>
+              <SearchBox autocompleteSuggestions={true} />
+            </Box>
 
           </Grid>
 
-        <Grid item xs={6}>
+          {/* Result Box */}
+          <Grid item xs={6}>
 
-            <Box sx={{ bgcolor: '#AD6A6C', height: '100vh' }} />
-            
-
-          
-  
-      {/* ELS Layout */}
-
-      <SearchProvider config={config}>
-        <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
-          {({ wasSearched }) => {
-            return (
-              <div className="App">
-                <ErrorBoundary>
-                  <Layout
-                    header={<SearchBox autocompleteSuggestions={true} />}
-                    sideContent={
-                      <div>
-                        {wasSearched && (
-                          <Sorting
-                            label={"Sort by"}
-                            sortOptions={buildSortOptionsFromConfig()}
-                          />
-                        )}
-                        {getFacetFields().map(field => (
-                          <Facet key={field} field={field} label={field} />
-                        ))}
-                      </div>
-                    }
-
-                    bodyContent={
-                      <Results
-                        titleField={getConfig().titleField}
-                        urlField={getConfig().urlField}
-                        thumbnailField={getConfig().thumbnailField}
-                        shouldTrackClickThrough={true}
-                      />
-                    }
-                    bodyHeader={
-                      <React.Fragment>
-                        {wasSearched && <PagingInfo />}
-                        {wasSearched && <ResultsPerPage />}
-                      </React.Fragment>
-                    }
-                    bodyFooter={<Paging />}
-                  />
-                </ErrorBoundary>
-              </div>
-            );
-          }}
-        </WithSearch>
-      </SearchProvider>
-
-      </Grid>
+            <Box sx={{ bgcolor: '#AD6A6C', height: '100vh' }}>
 
 
-      </Grid>
+
+              <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
+                {({ wasSearched }) => {
+                  return (
+                    <div className="App">
+
+                      <ErrorBoundary>
+                        <div>
+                          {wasSearched && (
+                            <Sorting
+                              label={"Sort by"}
+                              sortOptions={buildSortOptionsFromConfig()}
+                            />
+                          )}
+                          {getFacetFields().map(field => (
+                            <Facet key={field} field={field} label={field} />
+                          ))}
+                        </div>
 
 
-    </div>
+
+                        <Results
+                          titleField={getConfig().titleField}
+                          urlField={getConfig().urlField}
+                          thumbnailField={getConfig().thumbnailField}
+                          shouldTrackClickThrough={true}
+                        />
+
+
+                        <React.Fragment>
+                          {wasSearched && <PagingInfo />}
+                          {wasSearched && <ResultsPerPage />}
+                        </React.Fragment>
+                      </ErrorBoundary>
+
+                    </div>
+
+                  )
+                }}
+              </WithSearch>
+
+
+              <Paging />
+
+            </Box>
+
+
+
+          </Grid>
+
+
+        </Grid>
+
+
+
+    </SearchProvider>
+
   );
 }
