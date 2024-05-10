@@ -19,11 +19,66 @@ docker run -p 9200:9200 -d --name elasticsearch \
   -e "xpack.license.self_generated.type=basic" \
   docker.elastic.co/elasticsearch/elasticsearch:8.13.0
 ```
-Start Kibana. Remove --net parameter if you don't want to run it in specific 'elastic' docker network.
+Start Kibana. Add --net parameter if you don't want to run it in specific 'elastic' docker network.
 
 ```
-docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.13.2
+docker run --name kib01  -p 5601:5601 docker.elastic.co/kibana/kibana:8.13.2
 ```
+
+COORS config - if node and ELS run in different networks, enable coors in ELS /usr/share/elasticsearch/config/elasticsearch.yml
+
+```
+http.cors.allow-origin: "*" # Only use unrestricted value for local development
+# Use a specific origin value in production, like `http.cors.allow-origin: "https://<my-website-domain.example>"`
+http.cors.enabled: true
+http.cors.allow-credentials: true
+http.cors.allow-methods: OPTIONS, POST
+http.cors.allow-headers: X-Requested-With, X-Auth-Token, x-elastic-client-meta, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept
+```
+
+Make sure both container run in the same network. In docker you can create a network 'elastic'
+
+```
+docker network create elastic
+docker network connect elastic elasticsearch
+docker network connect elastic kib01
+```
+
+And then check when both are running if it worked with
+```
+docker inspect elastic
+```
+
+
+Create Index for Testdata in Kibana:
+
+```
+PUT ticket_test_data
+```
+
+Create sample ticket with Kibana:
+```
+POST ticket_test_data/_doc
+{
+ "ticket_number":"201",
+ "reporter":"julian",
+ "category_incident":"Generatorgeräusche",
+ "description": " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries."
+}
+
+```
+
+Check data has been created with Kibana: 
+```
+GET  _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+
 
 
 ## Getting started 🐣
