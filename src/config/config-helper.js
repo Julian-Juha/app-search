@@ -1,4 +1,5 @@
-import config from "../config/DEV-engine.json";
+//import config from "../config/DEV-engine.json";
+import config from "../config/PROD-engine.json";
 
 /**
  * This file abstracts most logic around the configuration of the Reference UI.

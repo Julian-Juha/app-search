@@ -2,10 +2,22 @@
   "endpointBase": "https://knowledgearchitects.es.europe-west3.gcp.cloud.es.io",
   "engineName": "knowledgearchitects",
   "searchKey": "KnowledgeArchitects:ZXVyb3BlLXdlc3QzLmdjcC5jbG91ZC5lcy5pbzo0NDMkOWJlNTdmNDAxYmY1NGQxY2FlMjFhNzEwNjAxNTA5ZjckNTNmOTg2OTNhMzM2NDVjZGI3MjlhMDg0ZWFlZTllZWY=",
-  "searchFields": ["ticket_number", "reporter","category_incident","description" ],
-  "resultFields": [
-    "ticket_number",
+  "searchFields": [
+    "Lösung", 
+    "description",
     "reporter",
-    "description"
+    "creation_date",
+    "id",
+    "ticket_number",
+    "category" 
+  ],
+  "resultFields": [
+    "Lösung", 
+    "description",
+    "reporter",
+    "creation_date",
+    "id",
+    "ticket_number",
+    "category" 
   ]
 }
