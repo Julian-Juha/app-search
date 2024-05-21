@@ -1,0 +1,12 @@
+{
+  "endpointBase": "http://localhost:9200",
+  "engineName": "irrelevant but dont delete",
+  "searchKey": "irrelevant but dont delete",
+  "searchFields": ["ticket_number", "reporter","category_incident","description" ],
+  "resultFields": [
+    "ticket_number",
+    "reporter",
+    "category_incident",
+    "description"
+  ]
+}
