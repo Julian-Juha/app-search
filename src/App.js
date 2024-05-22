@@ -56,6 +56,7 @@ const config = {
     facets: {
       "reporter": { type: "value" },
       "category": {type: "value"}
+      
     },
     ...buildSearchOptionsFromConfig()
   },
@@ -197,6 +198,14 @@ export default function App() {
                         {
                           name: "Reporter: Z -> A",
                           value: [{ field: "reporter", direction: "desc", unmapped_type: "long" }]
+                        },
+                        {
+                          name: "Newest to Oldest",
+                          value: [{ field: "creation_date", direction: "desc" }]
+                        },
+                        {
+                          name: "Oldest to Newest",
+                          value: [{ field: "creation_date", direction: "asc" }]
                         }
 
                       ]}
