@@ -180,7 +180,7 @@ export default function App() {
         {/* Filter Box */}
         <Grid item xs={4}>
 
-          <Box sx={{ bgcolor: '#D9D9D9', height: '90vh', padding: '2rem 2rem 0rem 2rem' }}>
+          <Box sx={{ bgcolor: '#D9D9D9', height: '100vh',  padding: '2rem 2rem 0rem 2rem' }}>
 
             <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
               {({ wasSearched }) => {
@@ -238,7 +238,7 @@ export default function App() {
 
         {/* Result Box */}
         <Grid item xs={8}>
-          <Box sx={{ bgcolor: '#AD6A6C', height: '90vh' }}>
+          <Box sx={{ bgcolor: '#AD6A6C', height: '100vh',  overflow: 'auto' }}>
 
             <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
               {({ wasSearched }) => {
@@ -261,7 +261,9 @@ export default function App() {
                 )
               }}
             </WithSearch>
-            <Paging />
+            <Box sx={{margin: '1rem auto 1rem auto', width: '10%'}}>
+                <Paging />
+            </Box>
           </Box>
         </Grid>
       </Grid>
