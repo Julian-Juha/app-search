@@ -137,6 +137,8 @@ export default function App() {
                 alt="Logo"
                 sx={{ display: 'flex', border: 0, height: 54, width: 54 }}
                 src={architects_logo}
+                onClick={event =>  window.location.href='/'}
+
               />
 
 
@@ -145,6 +147,7 @@ export default function App() {
                 alt="Logo"
                 sx={{ display: 'flex', border: 0 , height: 45}}
                 src={architects_name}
+                onClick={event =>  window.location.href='/'}
               />
 
               <Box sx={{ flexGrow: 1, padding: '0rem 15rem' }}>
