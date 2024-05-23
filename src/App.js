@@ -47,16 +47,15 @@ const connector = new ElasticsearchAPIConnector({
     id: "KnowledgeArchitects:ZXVyb3BlLXdlc3QzLmdjcC5jbG91ZC5lcy5pbzo0NDMkOWJlNTdmNDAxYmY1NGQxY2FlMjFhNzEwNjAxNTA5ZjckNTNmOTg2OTNhMzM2NDVjZGI3MjlhMDg0ZWFlZTllZWY="
   },
   apiKey: "Sm13bG5JOEJOLVp3NTM1eHRyYzc6dFZYZDFhQmFTRGFPcTdZUWNkSkMtUQ==",
-  index: "re_index_knowledgearchitects"
+  index: "0_index_knowledgearchitects"
 });
 
 const config = {
   searchQuery: {
-    disjunctiveFacets: ["reporter","category"],
+    disjunctiveFacets: ["reporter.keyword","category.keyword"],
     facets: {
-      "reporter": { type: "value" },
-      "category": {type: "value"}
-      
+      "reporter.keyword": { type: "value" },
+      "category.keyword": { type: "value"}
     },
     ...buildSearchOptionsFromConfig()
   },
@@ -193,11 +192,11 @@ export default function App() {
                       sortOptions={[
                         {
                           name: "Reporter: A -> Z",
-                          value: [{ field: "reporter", direction: "asc", unmapped_type: "long" }]
+                          value: [{ field: "reporter.keyword", direction: "asc", unmapped_type: "long" }]
                         },
                         {
                           name: "Reporter: Z -> A",
-                          value: [{ field: "reporter", direction: "desc", unmapped_type: "long" }]
+                          value: [{ field: "reporter.keyword", direction: "desc", unmapped_type: "long" }]
                         },
                         {
                           name: "Newest to Oldest",
@@ -212,12 +211,12 @@ export default function App() {
                     />
                     <Box sx={{ margin: '10px' }}>
 
-                      <Facet key={"1"} field={"reporter"} label={"Reporter"} />
+                      <Facet key={"1"} field={"reporter.keyword"} label={"Reporter"} />
 
                     </Box>
                     <Box sx={{ margin: '10px' }}>
 
-                      <Facet key={"1"} field={"category"} label={"Category"} />
+                      <Facet key={"1"} field={"category.keyword"} label={"Category"} />
 
                     </Box>
 
