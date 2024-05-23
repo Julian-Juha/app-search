@@ -47,15 +47,15 @@ const connector = new ElasticsearchAPIConnector({
     id: "KnowledgeArchitects:ZXVyb3BlLXdlc3QzLmdjcC5jbG91ZC5lcy5pbzo0NDMkOWJlNTdmNDAxYmY1NGQxY2FlMjFhNzEwNjAxNTA5ZjckNTNmOTg2OTNhMzM2NDVjZGI3MjlhMDg0ZWFlZTllZWY="
   },
   apiKey: "Sm13bG5JOEJOLVp3NTM1eHRyYzc6dFZYZDFhQmFTRGFPcTdZUWNkSkMtUQ==",
-  index: "0_index_knowledgearchitects"
+  index: "1_index_knowledgearchitects"
 });
 
 const config = {
   searchQuery: {
-    disjunctiveFacets: ["reporter.keyword","category.keyword"],
+    disjunctiveFacets: ["reporter.keyword", "category.keyword"],
     facets: {
       "reporter.keyword": { type: "value" },
-      "category.keyword": { type: "value"}
+      "category.keyword": { type: "value" }
     },
     ...buildSearchOptionsFromConfig()
   },
@@ -200,11 +200,11 @@ export default function App() {
                         },
                         {
                           name: "Newest to Oldest",
-                          value: [{ field: "creation_date", direction: "desc" }]
+                          value: [{ field: "creation_date.keyword", direction: "desc" }]
                         },
                         {
                           name: "Oldest to Newest",
-                          value: [{ field: "creation_date", direction: "asc" }]
+                          value: [{ field: "creation_date.keyword", direction: "asc" }]
                         }
 
                       ]}
