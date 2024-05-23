@@ -33,6 +33,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@mui/material/Grid';
 
 import architects_logo from './assets/architects_logo.png'
+import architects_name from './assets/architects_name.png'
 
 //  required for ELS cloud config
 // const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig();
@@ -114,6 +115,7 @@ function Item(props) {
 export default function App() {
 
   return (
+    
     <SearchProvider config={config}>
 
       {/* MUI Layout  */}
@@ -135,6 +137,14 @@ export default function App() {
                 alt="Logo"
                 sx={{ display: 'flex', border: 0, height: 54, width: 54 }}
                 src={architects_logo}
+              />
+
+
+<Box
+                component="img"
+                alt="Logo"
+                sx={{ display: 'flex', border: 0 , height: 45}}
+                src={architects_name}
               />
 
               <Box sx={{ flexGrow: 1, padding: '0rem 15rem' }}>
