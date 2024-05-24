@@ -3,21 +3,19 @@
   "engineName": "knowledgearchitects",
   "searchKey": "KnowledgeArchitects:ZXVyb3BlLXdlc3QzLmdjcC5jbG91ZC5lcy5pbzo0NDMkOWJlNTdmNDAxYmY1NGQxY2FlMjFhNzEwNjAxNTA5ZjckNTNmOTg2OTNhMzM2NDVjZGI3MjlhMDg0ZWFlZTllZWY=",
   "searchFields": [
-    "Lösung", 
     "description",
     "reporter",
     "creation_date",
-    "id",
     "ticket_number",
-    "category" 
+    "category",
+    "Lösung"
   ],
   "resultFields": [
-    "Lösung", 
     "description",
     "reporter",
     "creation_date",
-    "id",
     "ticket_number",
-    "category" 
+    "category",
+    "Lösung"
   ]
 }
