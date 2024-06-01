@@ -1,5 +1,9 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# for prod settings dont push your engine settings
+src/config/PROD-env.js
+src/config/PROD-engine.json
+
 # dependencies
 /node_modules
 
@@ -22,5 +26,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# for prod settings dont push your engine settings
-#src/config/engine.json

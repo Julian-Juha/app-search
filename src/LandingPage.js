@@ -35,6 +35,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@mui/material/Grid';
 import { styled, alpha, createTheme, ThemeProvider } from '@mui/material/styles';
 
+// get PROD secrets
+import {ENVconfig} from './config/PROD-env'
+
 // logos
 import architects_logo from './assets/architects_logo.png'
 import architects_name from './assets/architects_name.png'
@@ -64,14 +67,15 @@ const theme = createTheme({
     }
 });
 
-// conenct to ELS cloud
+// connect to ELS cloud
 const connector = new ElasticsearchAPIConnector({
     cloud: {
-        id: "KnowledgeArchitects:ZXVyb3BlLXdlc3QzLmdjcC5jbG91ZC5lcy5pbzo0NDMkOWJlNTdmNDAxYmY1NGQxY2FlMjFhNzEwNjAxNTA5ZjckNTNmOTg2OTNhMzM2NDVjZGI3MjlhMDg0ZWFlZTllZWY="
+        id: ENVconfig.elsID
     },
-    apiKey: "Sm13bG5JOEJOLVp3NTM1eHRyYzc6dFZYZDFhQmFTRGFPcTdZUWNkSkMtUQ==",
+    apiKey: ENVconfig.elsAPIkey,
     index: "1_index_knowledgearchitects"
 });
+
 
 // config for facets/ filter
 const config = {
@@ -127,12 +131,9 @@ const LandingPage = () => {
     const handleClose = () => setOpen(false);
 
     return (
-
         <SearchProvider config={config}>
-
             {/* MUI Layout  */}
             <ThemeProvider theme={theme}>
-
                 {/* Parent Box for header */}
                 <Box sx={{
                     display: 'flex', flexDirection: 'column'
@@ -141,10 +142,7 @@ const LandingPage = () => {
                     {/* CssBaseline entfernt margin */}
                     <CssBaseline />
                     <AppBar position="static"  >
-
                         <Toolbar>
-
-
                             <Box
                                 component="img"
                                 alt="Logo"
