@@ -76,7 +76,6 @@ const connector = new ElasticsearchAPIConnector({
     index: "1_index_knowledgearchitects"
 });
 
-
 // config for facets/ filter
 const config = {
     searchQuery: {
@@ -300,4 +299,5 @@ const LandingPage = () => {
         </SearchProvider>
     );
 }
+
 export default LandingPage;

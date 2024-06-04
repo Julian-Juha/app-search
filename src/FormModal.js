@@ -10,7 +10,7 @@ import {
     MenuItem,
     FormLabel
 } from '@mui/material';
-
+import axios from 'axios';
 
 const style = {
     position: 'absolute',
@@ -44,11 +44,16 @@ const FormModal = ({ open, handleClose }) => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
-        // Handle form submission logic here
-        handleClose();
+        try {
+            // const response = await axios.post('http://localhost:5000/api/data', formData);
+            console.log(formData);
+
+            //console.log('Data saved:', response.data);
+          } catch (error) {
+            console.error('Error saving data:', error);
+          }        handleClose();
 
         setFormData({
             reporter: '',
